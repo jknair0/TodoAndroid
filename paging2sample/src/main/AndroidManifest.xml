@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.paging2sample" >
+
+    <application>
+        <activity
+            android:name=".Paging2Activity"
+            android:exported="true"
+            android:label="@string/title_activity_paging2"
+            android:theme="@style/Theme.PagingSample.NoActionBar" />
+    </application>
+
+</manifest>
