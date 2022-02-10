@@ -1,4 +1,4 @@
-package com.example.datamodule.db.models
+package com.example.datamodule.db.room.models
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -20,5 +20,5 @@ data class SubTodoModel(
     val completed: Boolean
 ) {
 
-    constructor(): this(0, 0, "", false)
+    constructor() : this(0, 0, "", false)
 }

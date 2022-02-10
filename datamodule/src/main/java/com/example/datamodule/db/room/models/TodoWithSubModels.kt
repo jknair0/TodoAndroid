@@ -1,4 +1,4 @@
-package com.example.datamodule.db.models
+package com.example.datamodule.db.room.models
 
 import androidx.room.Embedded
 import androidx.room.Relation

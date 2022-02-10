@@ -3,6 +3,7 @@ plugins {
   id 'org.jetbrains.kotlin.android'
   id 'kotlin-kapt'
   id 'kotlin-android'
+  id 'realm-android'
 }
 
 android {
@@ -50,5 +51,12 @@ dependencies {
   kapt("androidx.room:room-compiler:$roomVersion")
   implementation("androidx.room:room-ktx:$roomVersion")
 
+  def realmVersion = "10.10.1"
+  api "io.realm:realm-annotations:$realmVersion"
+  api "io.realm:realm-android-library:$realmVersion"
+  api "io.realm:realm-android-kotlin-extensions:$realmVersion"
+  kapt "io.realm:realm-annotations-processor:$realmVersion"
+
   implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+  implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2'
 }

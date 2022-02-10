@@ -1,6 +1,6 @@
 package com.example.datamodule.mapper
 
-import com.example.datamodule.db.models.SubTodoModel
+import com.example.datamodule.db.room.models.SubTodoModel
 import com.example.datamodule.network.SubTodoParser
 import javax.inject.Inject
 

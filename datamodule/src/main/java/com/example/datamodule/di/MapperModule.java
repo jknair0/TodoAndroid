@@ -2,8 +2,8 @@ package com.example.datamodule.di;
 
 import com.example.datamodule.SubTodoEntity;
 import com.example.datamodule.TodoEntity;
-import com.example.datamodule.db.models.SubTodoModel;
-import com.example.datamodule.db.models.TodoModel;
+import com.example.datamodule.db.room.models.SubTodoModel;
+import com.example.datamodule.db.room.models.TodoModel;
 import com.example.datamodule.mapper.Mapper;
 import com.example.datamodule.mapper.SubModelToEntityMapper;
 import com.example.datamodule.mapper.SubTodoParserToModelMapper;
@@ -31,5 +31,4 @@ interface MapperModule {
 
     @Binds
     Mapper<SubTodoParser, SubTodoModel> bindsSubTodoParserToModelMapper(SubTodoParserToModelMapper subTodoParserToModelMapper);
-
 }

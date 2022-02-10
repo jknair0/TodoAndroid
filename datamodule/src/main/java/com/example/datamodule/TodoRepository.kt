@@ -1,7 +1,7 @@
 package com.example.datamodule
 
 import com.example.datamodule.db.DbSource
-import com.example.datamodule.db.models.TodoModel
+import com.example.datamodule.db.room.models.TodoModel
 import com.example.datamodule.mapper.Mapper
 import com.example.datamodule.network.NetworkSource
 import com.example.datamodule.network.TodoParser

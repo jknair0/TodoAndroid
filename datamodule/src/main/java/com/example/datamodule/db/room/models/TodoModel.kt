@@ -1,10 +1,8 @@
-package com.example.datamodule.db.models
+package com.example.datamodule.db.room.models
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import androidx.room.Relation
 
 @Entity
 data class TodoModel(
@@ -16,6 +14,6 @@ data class TodoModel(
     var subTodoModel: List<SubTodoModel>
 ) {
 
-    constructor(): this(0, "", false, emptyList())
+    constructor() : this(0, "", false, emptyList())
 
 }

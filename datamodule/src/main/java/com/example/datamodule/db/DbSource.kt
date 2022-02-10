@@ -1,7 +1,7 @@
 package com.example.datamodule.db
 
-import com.example.datamodule.db.models.SubTodoModel
-import com.example.datamodule.db.models.TodoModel
+import com.example.datamodule.db.room.models.SubTodoModel
+import com.example.datamodule.db.room.models.TodoModel
 import kotlinx.coroutines.flow.Flow
 
 interface DbSource {

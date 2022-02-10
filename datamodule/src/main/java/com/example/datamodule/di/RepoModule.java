@@ -1,8 +1,7 @@
 package com.example.datamodule.di;
 
 import com.example.datamodule.db.DbSource;
-import com.example.datamodule.db.DbSourceImpl;
-import com.example.datamodule.mapper.Mapper;
+import com.example.datamodule.db.realm.RealmDbSourceImpl;
 import com.example.datamodule.network.NetworkSource;
 import com.example.datamodule.network.NetworkSourceImpl;
 import dagger.Binds;
@@ -18,6 +17,5 @@ public interface RepoModule {
     NetworkSource bindsNetworkSource(NetworkSourceImpl networkSource);
 
     @Binds
-    DbSource bindsDataSource(DbSourceImpl dbSource);
-
+    DbSource bindsDataSource(RealmDbSourceImpl dbSource);
 }

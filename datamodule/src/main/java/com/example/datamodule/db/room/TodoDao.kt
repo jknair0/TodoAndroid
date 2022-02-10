@@ -5,9 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import com.example.datamodule.db.models.SubTodoModel
-import com.example.datamodule.db.models.TodoModel
-import com.example.datamodule.db.models.TodoWithSubModels
+import com.example.datamodule.db.room.models.SubTodoModel
+import com.example.datamodule.db.room.models.TodoModel
+import com.example.datamodule.db.room.models.TodoWithSubModels
 import kotlinx.coroutines.flow.Flow
 
 @Dao
