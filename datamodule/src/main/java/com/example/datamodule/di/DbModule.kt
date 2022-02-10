@@ -12,6 +12,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.realm.Realm
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.android.asCoroutineDispatcher
 import kotlinx.coroutines.runBlocking
 import javax.inject.Singleton
@@ -24,21 +25,6 @@ class DbModule {
     @Singleton
     fun providesAppRoomDatabase(@ApplicationContext context: Context?): AppRoomDatabase {
         return AppRoomDatabaseFactory.create(context)
-    }
-
-    @Provides
-    @Singleton
-    fun realmThread(): CoroutineDispatcher {
-        val handlerThread = HandlerThread("realm-thread")
-        handlerThread.start()
-        val handler = Handler(handlerThread.looper)
-        return handler.asCoroutineDispatcher()
-    }
-
-    @Provides
-    @Singleton
-    fun providesRealm(coroutineDispatcher: CoroutineDispatcher): Realm = runBlocking(coroutineDispatcher) {
-        Realm.getDefaultInstance()
     }
 
 }
