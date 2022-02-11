@@ -4,6 +4,7 @@ data class TodoParser(
     var id: Int,
     var title: String,
     var completed: Boolean,
-    var subTodos: List<SubTodoParser>
+    var subTodos: List<SubTodoParser>,
+    var page: Int
 )
 

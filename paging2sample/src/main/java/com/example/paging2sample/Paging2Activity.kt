@@ -33,6 +33,5 @@ class Paging2Activity : ComponentActivity() {
                 }) { Text(text = "Launch Main") }
             }
         }
-        viewModel.init()
     }
 }

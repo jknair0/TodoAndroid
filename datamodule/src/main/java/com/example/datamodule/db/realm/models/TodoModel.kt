@@ -9,9 +9,10 @@ open class TodoModel(
     var id: Int,
     var title: String,
     var completed: Boolean,
-    var subTodoModel: RealmList<SubTodoModel>
+    var subTodoModel: RealmList<SubTodoModel>,
+    var page: Int
 ) : RealmObject() {
 
-    constructor() : this(0, "", false, RealmList())
+    constructor() : this(0, "", false, RealmList(), 0)
 
 }

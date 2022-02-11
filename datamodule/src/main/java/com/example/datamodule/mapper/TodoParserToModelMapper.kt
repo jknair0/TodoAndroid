@@ -15,7 +15,8 @@ class TodoParserToModelMapper @Inject constructor(
                 id,
                 title,
                 completed,
-                subTodos.map(subTodoMapper::map)
+                subTodos.map(subTodoMapper::map),
+                page
             )
         }
     }

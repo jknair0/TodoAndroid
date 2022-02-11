@@ -4,5 +4,6 @@ data class TodoEntity(
     var id: Int,
     var title: String,
     var completed: Boolean,
-    var subTodos: List<SubTodoEntity>
+    var subTodos: List<SubTodoEntity>,
+    var page: Int
 )

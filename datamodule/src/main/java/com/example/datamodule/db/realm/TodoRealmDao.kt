@@ -1,20 +1,32 @@
 package com.example.datamodule.db.realm
 
+import android.util.Log
 import com.example.datamodule.db.realm.models.SubTodoModel
 import com.example.datamodule.db.realm.models.TodoModel
 import io.realm.Realm
 import io.realm.RealmChangeListener
 import io.realm.RealmResults
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 class TodoRealmDao @Inject constructor() {
+
+    init {
+        runBlocking {
+            transaction {
+                deleteAll()
+            }
+        }
+    }
 
     fun getAll(): Flow<List<TodoModel>> {
         return callbackFlow {
@@ -30,6 +42,15 @@ class TodoRealmDao @Inject constructor() {
                 close()
             }
         }.flowOn(Dispatchers.Realm)
+    }
+
+    suspend fun getByIdPage(page: Int): List<TodoModel> {
+        return realm {
+            val realm = Realm.getDefaultInstance()
+            realm.where(TodoModel::class.java)
+                .equalTo("page", page)
+                .findAll().map { copyFromRealm(it) }
+        }
     }
 
     suspend fun insert(todoModel: List<TodoModel>) {
@@ -64,11 +85,14 @@ class TodoRealmDao @Inject constructor() {
         Realm.getDefaultInstance().use(block)
     }
 
-    private suspend fun transaction(block: Realm.() -> Unit) = withContext(Dispatchers.Realm) {
-        Realm.getDefaultInstance().use {
-            it.beginTransaction()
-            it.block()
-            it.commitTransaction()
+    private suspend fun transaction(block: Realm.() -> Unit) {
+        withContext(Dispatchers.Realm) {
+            Realm.getDefaultInstance().use {
+                it.beginTransaction()
+                it.block()
+                it.commitTransaction()
+                Log.i("Realm", "insert succeeded")
+            }
         }
     }
 

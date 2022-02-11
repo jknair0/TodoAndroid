@@ -16,6 +16,10 @@ class TodoRepository @Inject constructor(
     private val todoParserToModelMapper: Mapper<TodoParser, TodoModel>
 ) {
 
+    suspend fun getTodoListByPage(page: Int): List<TodoEntity> {
+        return dbSource.getTodoListByPage(page).map { todos -> todoModelMapper.map(todos) }
+    }
+
     fun getTodos(): Flow<List<TodoEntity>> {
         return dbSource.listTodo().map { todos ->
             todos.map(todoModelMapper::map)

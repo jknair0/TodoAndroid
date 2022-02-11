@@ -15,7 +15,8 @@ class TodoModelToEntityMapper @Inject constructor(
                 id,
                 title,
                 completed,
-                subTodoModel.map(subTodoMapper::map)
+                subTodoModel.map(subTodoMapper::map),
+                page
             )
         }
     }

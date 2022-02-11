@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface DbSource {
 
+    suspend fun getTodoListByPage(page: Int): List<TodoModel>
+
     fun listTodo(): Flow<List<TodoModel>>
 
     suspend fun getTodoById(id: Int): TodoModel?

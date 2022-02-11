@@ -13,6 +13,13 @@ import com.example.datamodule.db.realm.models.TodoModel as RealmTodoModel
 class RealmDbSourceImpl @Inject constructor(
     private val realmDao: TodoRealmDao
 ) : DbSource {
+
+    override suspend fun getTodoListByPage(page: Int): List<TodoModel> {
+        return realmDao.getByIdPage(page).map {
+            it.toRoomTodoModel()
+        }
+    }
+
     override fun listTodo(): Flow<List<TodoModel>> {
         return realmDao.getAll().map {
             it.map { realmTodoModel -> realmTodoModel.toRoomTodoModel() }
@@ -46,7 +53,8 @@ private fun TodoModel.toRoomTodoModel(): RealmTodoModel {
         id,
         title,
         completed,
-        RealmList(* subTodoModel.map { it.toRealmSubTodoModel() }.toTypedArray())
+        RealmList(* subTodoModel.map { it.toRealmSubTodoModel() }.toTypedArray()),
+        page
     )
 }
 
@@ -63,7 +71,8 @@ private fun RealmTodoModel.toRoomTodoModel(): TodoModel {
         id,
         title,
         completed,
-        subTodoModel.map { it.toRoomSubModel() }
+        subTodoModel.map { it.toRoomSubModel() },
+        page
     )
 }
 

@@ -11,9 +11,10 @@ data class TodoModel(
     var title: String,
     var completed: Boolean,
     @Ignore
-    var subTodoModel: List<SubTodoModel>
+    var subTodoModel: List<SubTodoModel>,
+    var page: Int
 ) {
 
-    constructor() : this(0, "", false, emptyList())
+    constructor() : this(0, "", false, emptyList(), 0)
 
 }
